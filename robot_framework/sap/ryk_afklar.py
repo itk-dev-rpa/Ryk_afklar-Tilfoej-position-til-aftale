@@ -167,7 +167,7 @@ def find_fp_aftale(postliste_table, bilagsnummer: str) -> int:
     bilag_index = -1
 
     for row in range(postliste_table.rowCount):
-        # Check if bilag is in list TODO: What?
+        # Check if bilag is in list
         if postliste_table.getCellValue(row, "OPBEL") == bilagsnummer:
             bilag_index = row
 
