@@ -12,7 +12,7 @@ def process(orchestrator_connection: OrchestratorConnection) -> None:
     """Do the primary process of the robot."""
     orchestrator_connection.log_trace("Running process.")
 
-    session = multi_session.get_all_sap_sessions()[0]
+    session = multi_session.spawn_sessions(1)[0]
 
     zdkd_list_sbs_aftale.search_fp_list(session)
     num_cases = ryk_afklar.search_work_list(session)
