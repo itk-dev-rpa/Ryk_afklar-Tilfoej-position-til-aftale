@@ -187,7 +187,7 @@ def find_fp_aftale(postliste_table, bilagsnummer: str) -> int:
 
 
 def add_bilag_to_aftale(session, aftale_row: int, bilagsnummer: str) -> bool:
-    """Check if the bilag can be added and then add the bilag to the fp-aftale. 
+    """Check if the bilag can be added and then add the bilag to the fp-aftale.
 
     Args:
         session: The SAP session object.
