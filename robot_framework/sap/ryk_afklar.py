@@ -1,3 +1,5 @@
+"""This module handles all actions regarding the zdkd_ryk_afklar transaction."""
+
 from datetime import datetime
 
 from itk_dev_shared_components.sap import gridview_util
