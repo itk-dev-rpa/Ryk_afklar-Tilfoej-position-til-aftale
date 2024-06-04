@@ -13,7 +13,7 @@ SCREENSHOT_SENDER = "robot@friend.dk"
 
 # Constant/Credential names
 ERROR_EMAIL = "Error Email"
-SAP_LOGIN = "Mathias SAP"
+SAP_LOGIN = "SAP Ryk Afklar"
 
 # The name of the job queue
 QUEUE_NAME = "Ryk afklar - Tilføj position til aftale"
