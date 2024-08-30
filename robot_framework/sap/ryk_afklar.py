@@ -81,9 +81,14 @@ def handle_case(orchestrator_connection: OrchestratorConnection, session, row_in
     # Find the bilag in the postliste table and click "Vis relation"
     postliste_table = session.findById("wnd[0]/usr/tabsDATA_DISP/tabpDATA_DISP_FC1/ssubDATA_DISP_SCA:RFMCA_COV:0202/cntlRFMCA_COV_0100_CONT5/shellcont/shell")
 
-    bilag_row = gridview_util.find_row_index_by_value(postliste_table, "OPBEL", bilagsnummer)
+    # Search for the bilagsnummer and get the row number
+    postliste_table.pressToolbarButton("&FIND")
+    session.findById("wnd[1]/usr/txtGS_SEARCH-VALUE").text = bilagsnummer
+    session.findById("wnd[1]/tbar[0]/btn[0]").press()
+    session.findById("wnd[1]/tbar[0]/btn[12]").press()
+    bilag_row = postliste_table.currentCellRow
 
-    if bilag_row == -1:
+    if postliste_table.getCellValue(bilag_row, "OPBEL") != bilagsnummer:
         raise ValueError("The bilagsnummer wasn't found.")
 
     postliste_table.setCurrentCell(bilag_row, "OPBEL")
