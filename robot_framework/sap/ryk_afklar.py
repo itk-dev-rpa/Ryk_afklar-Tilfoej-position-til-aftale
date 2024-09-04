@@ -66,6 +66,10 @@ def handle_case(orchestrator_connection: OrchestratorConnection, session, row_in
     forretningspartner = case_table.getCellValue(row_index, "GPART")
     bilagsnummer = case_table.getCellValue(row_index, "OPBEL")
 
+    # Check if the forretningspartner is on the blacklist
+    if forretningspartner in orchestrator_connection.process_arguments.split(","):
+        return
+
     reference = f"{forretningspartner}:{bilagsnummer}"
     if not check_queue(orchestrator_connection, reference):
         return
