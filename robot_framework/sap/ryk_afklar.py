@@ -5,6 +5,7 @@ from datetime import datetime
 from itk_dev_shared_components.sap import gridview_util
 from OpenOrchestrator.orchestrator_connection.connection import OrchestratorConnection
 from OpenOrchestrator.database.queues import QueueStatus
+import itk_dev_event_log
 
 from robot_framework import config
 
@@ -117,10 +118,12 @@ def handle_case(orchestrator_connection: OrchestratorConnection, session, row_in
         session.findById("wnd[1]/tbar[0]/btn[7]").press()
         session.findById("wnd[2]/usr/btnSPOP-OPTION1").press()
         orchestrator_connection.set_queue_element_status(queue_element.id, QueueStatus.DONE, message="Bilag tilføjet til aftale.")
+        itk_dev_event_log.emit(orchestrator_connection.process_name, "Attachment attached.")
     else:
         # Cancel
         session.findById("wnd[1]/tbar[0]/btn[12]").press()
         orchestrator_connection.set_queue_element_status(queue_element.id, QueueStatus.DONE, message="Bilag ikke tilføjet til aftale.")
+        itk_dev_event_log.emit(orchestrator_connection.process_name, "Attachment not attached.")
 
     # Unlock case
     session.findById("wnd[0]/usr/cntlGRID1/shellcont/shell").selectedRows = row_index
