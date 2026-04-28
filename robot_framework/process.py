@@ -22,10 +22,3 @@ def process(orchestrator_connection: OrchestratorConnection) -> None:
 
     for i in range(num_cases):
         ryk_afklar.handle_case(orchestrator_connection, session, i)
-
-
-if __name__ == '__main__':
-    conn_string = os.getenv("OpenOrchestratorConnString")
-    crypto_key = os.getenv("OpenOrchestratorKey")
-    oc = OrchestratorConnection("Sletning Test", conn_string, crypto_key, "", "", "")
-    process(oc)
