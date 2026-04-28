@@ -1,7 +1,5 @@
 """This module contains the main process of the robot."""
 
-import os
-
 from OpenOrchestrator.orchestrator_connection.connection import OrchestratorConnection
 from itk_dev_shared_components.sap import multi_session
 import itk_dev_event_log
