@@ -1,7 +1,5 @@
 """This module contains the main process of the robot."""
 
-import os
-
 from OpenOrchestrator.orchestrator_connection.connection import OrchestratorConnection
 from itk_dev_shared_components.sap import multi_session
 import itk_dev_event_log
@@ -22,10 +20,3 @@ def process(orchestrator_connection: OrchestratorConnection) -> None:
 
     for i in range(num_cases):
         ryk_afklar.handle_case(orchestrator_connection, session, i)
-
-
-if __name__ == '__main__':
-    conn_string = os.getenv("OpenOrchestratorConnString")
-    crypto_key = os.getenv("OpenOrchestratorKey")
-    oc = OrchestratorConnection("Sletning Test", conn_string, crypto_key, "")
-    process(oc)
